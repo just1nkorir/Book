@@ -1,36 +1,35 @@
-import { useState } from "react";
-import Modal from "./Modal";
+import { useState } from "react"
+import Details from "./Details"
 
-const Card = ({ book }) => {
-    const [show,setShow]=useState(false);
-    const [bookItem,setItem]=useState();
-    console.log(book)
+function Card ({books}){
+
+    const [display, setDisplay] = useState(false)
+    const [item, setItem] = useState({})
+
+    console.log(books)
+
     return (
-        <>
-            {
-                book.map((item) => {
-                    let thumbnail=item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.smallThumbnail;
-                    let amount=item.saleInfo.listPrice && item.saleInfo.listPrice.amount;
-                    if(thumbnail!= undefined && amount !=undefined)
-                    {
-                        return (
-                            <>
-                            <div className="card" onClick={()=>{setShow(true);setItem(item)}}>
-                                <img src={thumbnail} alt="" />
-                                <div className="bottom">
-                                    <h3 className="title">{item.volumeInfo.title}</h3>
-                                    <p className="amount">&#8377;{amount}</p>
-                                </div>
-                            </div>
-                              <Modal show={show} item={bookItem} onClose={()=>setShow(false)}/>
-                            </>
-                        )
-                    }
-                    
-                })
-            }
-
+        <> 
+           {
+            books.map((book) => {
+                let thumbnail = book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.smallThumbnail
+        
+                return(
+                    <>
+                    <div className="card" onClick={() => {setDisplay(true);setItem(book)}}>
+                        <img src={thumbnail} alt="" />
+                        <div className="bottom">
+                            <h3 className="title">{book.volumeInfo.title}</h3>
+                        </div>
+                    </div>
+                    </>
+                )   
+            })
+           }
+        
+        <Details details={display} item={item} onClose={() => setDisplay(false)}/>
         </>
     )
 }
-export default Card;
+
+export default Card; 
