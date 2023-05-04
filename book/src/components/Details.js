@@ -1,4 +1,4 @@
-function Modal({ show, item, onClose }) {
+function Details({ show, item, onClose }) {
     if (!show) {
         return null;
     }
@@ -23,4 +23,4 @@ function Modal({ show, item, onClose }) {
         </>
     );
 }
-export default Modal;
+export default Details;
