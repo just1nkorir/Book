@@ -1,12 +1,25 @@
 import { useState } from "react"
 import Details from "./Details"
+import MyList from "./MyList"
 
 function Card ({books}){
-
+    const [list, setList] = useState([])
     const [display, setDisplay] = useState(false)
-    const [item, setItem] = useState({})
+    const [item, setItem] = useState([])
 
     console.log(books)
+
+    function handleAddToList(book){
+       if (list.find(b => b.id === book.id)) {
+            return;
+          }
+          setList(prevbooks => [...prevbooks, book]);
+    }
+
+    function handleRemoveFromList(id) {
+        setList(prevbooks => prevbooks.filter(b => b.id === id))
+    }
+
 
     return (
         <> 
@@ -21,13 +34,14 @@ function Card ({books}){
                         <div className="bottom">
                             <h3 className="title">{book.volumeInfo.title}</h3>
                         </div>
+                        <button onClick={() => handleAddToList(book)}>add to my list</button>
                     </div>
                     </>
                 )   
             })
            }
-        
-        <Details details={display} item={item} onClose={() => setDisplay(false)}/>
+        <Details display={display} item={item} onClose={() => setDisplay(false)}/>
+        <MyList list={list} handleRemove={handleRemoveFromList}/>
         </>
     )
 }

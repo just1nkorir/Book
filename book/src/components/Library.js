@@ -20,7 +20,7 @@ function Library() {
         <>
             <div className="header">
                 <div className="row1">
-                    <h1>A room without books is like<br /> a body without a soul.</h1>
+                    <h1>"If you don’t like to read,<br/> you haven’t found the right book."</h1>
                 </div>
                 <div className="row2">
                     <h2>Find Your Book</h2>
