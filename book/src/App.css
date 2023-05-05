@@ -94,6 +94,12 @@ html{
     text-align: center;
     position: relative;
 }
+.card button{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    position: relative;
+    padding-bottom: 0px;
+}
 .card:hover{
     transform: scale(0.9);
     background-color: rgba(255,255,255,0.8);

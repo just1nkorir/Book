@@ -29,12 +29,12 @@ function Card ({books}){
         
                 return(
                     <>
-                    <div className="card" onClick={() => {setDisplay(true);setItem(book)}}>
+                    <div className="card" onClick={() => handleAddToList(book)}>
                         <img src={thumbnail} alt="" />
                         <div className="bottom">
                             <h3 className="title">{book.volumeInfo.title}</h3>
                         </div>
-                        <button onClick={() => handleAddToList(book)}>add to my list</button>
+                        <button onClick={() => {setDisplay(true);setItem(book)}}>View details</button>
                     </div>
                     </>
                 )   
