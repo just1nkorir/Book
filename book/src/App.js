@@ -1,6 +1,7 @@
 import React from 'react';
 import Library from './components/Library';
 import './App.css'
+
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import MyList from './components/MyList';
@@ -8,7 +9,7 @@ import MyList from './components/MyList';
 function App() {
   return (
     <>
-    <BrowserRouter>
+     <BrowserRouter>
     <NavBar />
     <Routes>
       <Route path='/library' element ={<Library/>} >
@@ -19,7 +20,6 @@ function App() {
       </Route>
     </Routes>
     </BrowserRouter>
-      {/*<Library/>*/}
     </>
   );
 }
