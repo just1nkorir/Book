@@ -1,3 +1,5 @@
+import "../css/Details.css";
+
 function Details({ display, item, onClose }) {
     console.log(item,)
 

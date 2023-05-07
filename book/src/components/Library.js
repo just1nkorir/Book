@@ -1,6 +1,7 @@
 import {useState}from "react";
 import Card from "./Card";
 import axios from 'axios'
+import "../css/Library.css";
 
 function Library() {
     const [search, setSearch] = useState("");
