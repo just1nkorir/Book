@@ -1,25 +1,26 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Details from "./Details"
-import MyList from "./MyList"
 
 function Card ({books}){
     const [list, setList] = useState([])
     const [display, setDisplay] = useState(false)
     const [item, setItem] = useState([])
 
-    console.log(books)
+    console.log(list)
 
-    function handleAddToList(book){
-       if (list.find(b => b.id === book.id)) {
+    useEffect(() => {
+        if (list === []){
             return;
-          }
-          setList(prevbooks => [...prevbooks, book]);
-    }
-
-    function handleRemoveFromList(id) {
-        setList(prevbooks => prevbooks.filter(b => b.id === id))
-    }
-
+        } else {
+            fetch('http://localhost:3500/booklist',{
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json"
+            },
+            body : JSON.stringify(list)
+        })
+        }  
+    })
 
     return (
         <> 
@@ -29,21 +30,23 @@ function Card ({books}){
         
                 return(
                     <>
-                    <div className="card" onClick={() => {setDisplay(true);setItem(book)}}>
+                    <div className="card" >
                         <img src={thumbnail} alt="" />
                         <div className="bottom">
                             <h3 className="title">{book.volumeInfo.title}</h3>
                         </div>
-                        <button onClick={() => handleAddToList(book)}>add to my list</button>
+                        <button onClick={() => {setDisplay(true);setItem(book)}}>View details</button><br/>
+                        <button onClick={() => setList(book)}>Add to list</button>
                     </div>
                     </>
                 )   
             })
            }
+        
         <Details display={display} item={item} onClose={() => setDisplay(false)}/>
-        <MyList list={list} handleRemove={handleRemoveFromList}/>
         </>
     )
 }
+
 
 export default Card; 

@@ -32,7 +32,6 @@ function Library() {
                             onChange={e => setSearch(e.target.value)}
                             onKeyDown = {searchBook} />
                     </div>
-                    <img src="./images/bg2.png" alt="" />
                 </div>
             </div>
 
