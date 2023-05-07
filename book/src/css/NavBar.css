@@ -1,0 +1,9 @@
+a{
+    font-size: 25px;
+    padding: 10px;
+    color: burlywood
+}
+
+a:hover{
+    color: grey;
+}

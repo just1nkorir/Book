@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import Details from "./Details"
+import "../css/Card.css";
 
 function Card ({books}){
     const [list, setList] = useState([])
@@ -35,8 +36,10 @@ function Card ({books}){
                         <div className="bottom">
                             <h3 className="title">{book.volumeInfo.title}</h3>
                         </div>
+                        <div className="btn">
                         <button onClick={() => {setDisplay(true);setItem(book)}}>View details</button><br/>
                         <button onClick={() => setList(book)}>Add to list</button>
+                        </div>
                     </div>
                     </>
                 )   

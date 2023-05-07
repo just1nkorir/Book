@@ -1,13 +1,14 @@
 import { NavLink } from "react-router-dom";
+import "../css/NavBar.css";
 
 function NavBar(){
     return(
         <>
         <NavLink to={'/library'} end>
-            Library
+            <a Library>Library</a>
         </NavLink>
         <NavLink to={'/booklist'} end>
-            Booklist
+        <a Library>Booklist</a>
         </NavLink>
         </>
     )
